@@ -1,0 +1,7 @@
+// configurando react router 
+
+// fazer as configuracóes e colcoar as rotas
+
+// colocar as paginas e tudo mais... 
+
+// colcoando as rotas, e colocando as paginas de css conectadas com as paginas de js, em uma pasta sé, lembre de smepre ter essa organizaçao

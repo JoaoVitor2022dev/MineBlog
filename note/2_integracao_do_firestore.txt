@@ -1,0 +1,10 @@
+//  integracao do firebase ao react 
+
+// fazer a configuraçao do firebase dentro do projeto... 
+
+// colcoar os codigos e o banco no sistema para exportaçao...
+
+localizaçao:
+
+diretorio = firebase/config.js/
+

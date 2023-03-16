@@ -1,0 +1,7 @@
+//   adicionando componentes de navbar 
+
+
+// agora estamos fazendo uma configuraçao do navbar, colocando as rotas e seus links na navbar 
+
+// tambem estamos criando o footer, que é o rota pe do site e criamos os dois com responsividadec
+

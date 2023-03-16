@@ -1,0 +1,22 @@
+// css geral 
+
+// fazer alguns esyilos que precisar ser geral 
+
+// como o do btton 
+
+// ou backgtour
+
+// outra coisa é colocar a font que eu vou colocar no projeto 
+
+//  coisa para fazer no css geral 
+
+1 - button 
+
+2 - textarea e inputs 
+
+3 - body 
+
+4 - a , links 
+
+
+localizaçao é no index.css

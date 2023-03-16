@@ -1,0 +1,6 @@
+//     setup  do fire base  
+
+
+//  criar uma conta no fise base e tudo mais...
+
+// entendendo os dados do firebase

@@ -1,0 +1,6 @@
+//   css de navbar e footer 
+
+// 1 - fazer o css do footer 
+
+// 2 - depois o css do navbar 
+

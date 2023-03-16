@@ -1,0 +1,9 @@
+// agora vamos criar o form, e colcoar os inputs e html 
+
+// e logo apos stylizar o form de uma vez...
+
+// tentamos fazera parte da logica no proximo passo...
+
+
+
+
