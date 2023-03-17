@@ -37,13 +37,13 @@ nav button:hover {
 
 form {
   max-width: 40%;
-  margin: 0;
+  margin: 0 auto;
 }
 
 label {
   display: flex;
   flex-direction: column;
-  margin-bottom: 1px;
+  margin-bottom: 1em;
 }
 
 label span {

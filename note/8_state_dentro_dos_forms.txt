@@ -1,0 +1,6 @@
+//   agora é a parte de fazer o state do form 
+
+// temos que fazer os dados serem enviados para a nossa API JSON... 
+
+// de forma que precisamos colocar uma value e uma functionq que envia dados para o back end...
+
