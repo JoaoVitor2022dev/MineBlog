@@ -85,6 +85,8 @@ export const useAuthentication = () => {
    }, []); 
 
   
+  // retornando todos as informaçoes e dados para o externo...
+
     return  { 
         auth,
         createUser,
