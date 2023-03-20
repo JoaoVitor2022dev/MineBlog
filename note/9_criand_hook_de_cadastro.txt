@@ -1,0 +1,6 @@
+//     vamos fazer a altenticaçao 
+
+// mais vamos usar os hooks para nos ajudar 
+
+// entao logo vamos fazer duto de uma forma mais facil para fazer a manutençao do codigo... 
+
