@@ -1,3 +1,4 @@
+import { async } from "@firebase/util";
 import { 
     getAuth,
     createUserWithEmailAndPassword, 
@@ -29,5 +30,66 @@ export const useAuthentication = () => {
         }
     }
 
+    // function que vai criar o usario
+
+    const createUser = async ( data ) => { 
+ 
+     // checa se o cancelled esta true, se estiver true... para a function createUser   
+      
+     checkIfIsCancelled(); 
+
+     // se tudo estiver certo entao vamos coloar o loading como true, pois esta function trabalha com dados... entao demora
+   
+     setLoading(true);
+
+     // fazer  um try catch agora para caso de erro, que posssamos vizualizar melhor...
+ 
+     try {
+        
+     // momento que os dados vao para o firebase e sao salvo no firestorege
+
+      const { user } = await createUserWithEmailAndPassword( 
+          auth,
+          data.email,
+          data.password
+       );
+
+     // a parte que ele faz o update de depois de salvar o dados...   
+
+     await updateProfile(user, { 
+        displayName: data.displayName     
+     });
+
+     // por fim retorna o user criado com sucesso
+
+     return user;
+
+     } catch (error) {
+        
+      // so fazer o error e deicar ele mais legivel 
+
+      console.log(error.message);
+      console.log(typeof error.message);
+     }
+
+     //  finalizar o loading... 
+
+     setLoading(false);
+
+   };
+
+   // uma funcitond e user effet so para repetir uma vez e cancelar as outras functions 
+
+   useEffect(() => { 
+    return () => setCancelled(true);
+   }, []); 
+
+  
+    return  { 
+        auth,
+        createUser,
+        error,
+        loading
+    }
 
 };
