@@ -1,4 +1,5 @@
-import { async } from "@firebase/util";
+import { db } from "../firebase/config"
+
 import { 
     getAuth,
     createUserWithEmailAndPassword, 
@@ -42,6 +43,10 @@ export const useAuthentication = () => {
    
      setLoading(true);
 
+     // limpar o seterror antes de começar o cadastro 
+      
+     setError(null);
+
      // fazer  um try catch agora para caso de erro, que posssamos vizualizar melhor...
  
      try {
@@ -61,6 +66,8 @@ export const useAuthentication = () => {
      });
 
      // por fim retorna o user criado com sucesso
+ 
+     setLoading(false); 
 
      return user;
 
@@ -70,12 +77,23 @@ export const useAuthentication = () => {
 
       console.log(error.message);
       console.log(typeof error.message);
+
+     // error de sistema, precisamos  tratar ele em portugues... 
+
+     let systemErrorMessage; 
+
+     if (error.message.includes("Password")) {
+        systemErrorMessage = "A senha precisa conter pelo menos 6 caracteres. "; 
+     } else if (error.message.includes("email-already")) {
+        systemErrorMessage = "E-mail já cadastrado. "
+     } else {
+        systemErrorMessage = "Ocorreu um erro, por favor tente mais tarde.";
      }
-
-     //  finalizar o loading... 
-
-     setLoading(false);
-
+   
+       setError(systemErrorMessage);
+      //  finalizar o loading... 
+        setLoading(false);
+     }
    };
 
    // uma funcitond e user effet so para repetir uma vez e cancelar as outras functions 

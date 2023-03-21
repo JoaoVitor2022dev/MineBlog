@@ -3,6 +3,8 @@ import style from "./Register.module.css";
 // hooks de logica 
 import { useState, useEffect } from "react";
 
+// hook de autheticaçao do back and
+import { useAuthentication } from "../../hook/useAuthentication";
 
 const Register = () => {
  
@@ -11,8 +13,13 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState(""); 
   const [error, setError] = useState("");
+
+ // dados do back and e da authentication 
+  const { createUser, error: AuthError, loading } = useAuthentication();
   
-  const handleSubmit = (event) => {
+
+  // function que esta respondavel por mandar dados para o back and por meio do hook useAuthentication.js 
+  const handleSubmit =  async (event) => {
     event.preventDefault();
 
     setError(""); 
@@ -28,9 +35,22 @@ const Register = () => {
       setError(" As senhas precisam ser iguais! "); 
     }
 
-    console.log(user);
+    //  vamos cria o res e mandar para o back and do firebase
+
+    const res = await createUser(user); 
+
+    console.log(res);
 
   }; 
+
+  // vamos conectar os erros de autherror e error para imprimir na tela, error do back com error do front 
+
+  useEffect(() => {
+    if (AuthError) {
+      setError(AuthError);
+    }
+  }, [AuthError]);
+
 
   return (
     <div className={style.register}>
@@ -76,7 +96,8 @@ const Register = () => {
              onChange={(e) => setConfirmPassword(e.target.value)} 
              />
           </label>
-          <button className="btn">Cadastrar</button>
+          {!loading && <button className="btn">Cadastrar</button>}
+          {loading && <button className="btn" disabled>Aguarde...</button>}
           {error && <p className="error">{error}</p>}
         </form>
     </div>
