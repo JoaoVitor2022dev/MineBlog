@@ -14,21 +14,26 @@ import Footer from './components/Footer';
 import Register from './pages/Register/Register';
 import Login from './pages/Login/Login';
 
+// o context api 
+import { AuthContextProvider } from './Context/AuthContext';
+
 function App() {
   return (
     <div className="App"> 
-     <BrowserRouter>
-      <NavBar/>
-       <div className="container">
-         <Routes>
-           <Route path='/' element={<Home/>}/>
-           <Route path='/about' element={<About/>}/>
-           <Route path='/register' element={<Register/>}/>
-           <Route path='/login' element={<Login/>}/>
-         </Routes>
-       </div>
-       <Footer/>
-      </BrowserRouter>
+        <AuthContextProvider>
+            <BrowserRouter>
+               <NavBar/>
+                 <div className="container">
+                     <Routes>
+                     <Route path='/' element={<Home/>}/>
+                     <Route path='/about' element={<About/>}/>
+                     <Route path='/register' element={<Register/>}/>
+                     <Route path='/login' element={<Login/>}/>
+                     </Routes>
+               </div>
+              <Footer/>
+           </BrowserRouter>
+        </AuthContextProvider>
     </div>
   );
 }
