@@ -1,0 +1,10 @@
+
+/ 1 - fizemos o hook de autenticaçao;
+
+//  2 - registramos os ususario no banco de dados do firebase; 
+
+// 3 - agora vamos usar o contexto da autehnticaçao dos usuarios;
+
+// ex: se o usuairo ja é cadastrado, ele pode ter outro recurso dentro do site... por meio do context api
+
+// 4 - agora vamos colocar o usuario dentro do contexto criado....

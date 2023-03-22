@@ -1,5 +1,14 @@
+// hook que mostra authenticaçao feita com sucesso
+import { onAuthStateChanged } from 'firebase/auth';
+
+// hooks do react
+import { useState, useEffect } from 'react';
+
 //  styles de css
 import './App.css';
+
+// hook de authenticaçao do back and
+import { useAuthentication } from './hook/useAuthentication';
 
 // condig de router
 import { BrowserRouter, Routes , Route, Navigate } from "react-router-dom"; 
@@ -18,9 +27,32 @@ import Login from './pages/Login/Login';
 import { AuthContextProvider } from './Context/AuthContext';
 
 function App() {
+  
+  // dados de usuario 
+  const [user, setUser] = useState(undefined);
+  const { auth } = useAuthentication(); 
+  
+  const loadingUser = user === undefined;
+
+  
+// vai ver se tem algum usuario autehnticado...
+  useEffect(() => {
+
+    onAuthStateChanged(auth, (user) => { 
+        setUser(user);
+    });   
+
+  },[ auth ]);
+   
+
+  // logica para carregar dados 
+  if (loadingUser) {
+    return <p>Carregando...</p>
+  }
+
   return (
     <div className="App"> 
-        <AuthContextProvider>
+        <AuthContextProvider value={ { user } }>
             <BrowserRouter>
                <NavBar/>
                  <div className="container">
