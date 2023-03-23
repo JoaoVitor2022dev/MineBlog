@@ -16,8 +16,6 @@ const NavBar = () => {
   // pegar o dados do usuario que esta no provider 
   const { user } = useAuthValue();
 
-    
-
   return (
    <nav className={style.navbar}>
       <NavLink to="/" className={style.brand}>
@@ -30,6 +28,7 @@ const NavBar = () => {
          <li>
          <NavLink to="/about" className={({isActive}) => (isActive ? style.active : "")}>Sobre</NavLink>
          </li>
+         {/* links para usuario */}
          {!user && (
           <>
             <li>
@@ -40,6 +39,7 @@ const NavBar = () => {
             </li>
           </>)
          }
+         {/* links para usuario com auth */}
          { user && ( 
            <>
              <li>
