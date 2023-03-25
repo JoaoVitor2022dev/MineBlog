@@ -33,7 +33,7 @@ export const useAuthentication = () => {
 
     // function que vai criar o usario
 
-    const createUser = async ( data ) => { 
+/* resgister */ const createUser = async ( data ) => { 
  
      // checa se o cancelled esta true, se estiver true... para a function createUser   
       
@@ -96,8 +96,19 @@ export const useAuthentication = () => {
      }
    };
 
-   // uma funcitond e user effet so para repetir uma vez e cancelar as outras functions 
+    // logout - sing out  
 
+    const logout = () => { 
+
+    //  para diminuir as funcitons    
+    checkIfIsCancelled()
+        
+     // apenas usar o metodo
+     signOut(auth);
+         
+    }; 
+    
+   // uma funcitond e user effet so para repetir uma vez e cancelar as outras functions 
    useEffect(() => { 
     return () => setCancelled(true);
    }, []); 
@@ -109,7 +120,8 @@ export const useAuthentication = () => {
         auth,
         createUser,
         error,
-        loading
+        loading,
+        logout,
     }
 
 };

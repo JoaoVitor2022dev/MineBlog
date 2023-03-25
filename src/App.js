@@ -34,6 +34,9 @@ function App() {
   const [user, setUser] = useState(undefined);
   const { auth } = useAuthentication(); 
   
+  
+
+  // if boleano para ve se o usuario é definido ou nao 
   const loadingUser = user === undefined;
 
   
@@ -46,7 +49,6 @@ function App() {
 
   },[ auth ]);
    
-
   // logica para carregar dados 
   if (loadingUser) {
     return <p>Carregando...</p>

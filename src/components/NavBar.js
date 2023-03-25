@@ -15,6 +15,9 @@ const NavBar = () => {
   
   // pegar o dados do usuario que esta no provider 
   const { user } = useAuthValue();
+  
+  // importar so user authentication 
+  const { logout } = useAuthentication();
 
   return (
    <nav className={style.navbar}>
@@ -48,6 +51,11 @@ const NavBar = () => {
              <li>
                <NavLink to="/dashboard" className={({isActive}) => (isActive ? style.active : "")}>Dashboard</NavLink>
             </li>
+            {user && (
+              <li>
+                <button onClick={logout}>Sair</button>
+              </li>
+            )}
            </>
          )}
        </ul>

@@ -1,0 +1,6 @@
+//    function de logout 
+
+// agora vamos colocar uma function de logout, que é para o usuario sair do sistema do site no caso do blog
+
+// comecamos o logout no hook que esta centralizando os dados...
+
