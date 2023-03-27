@@ -1,0 +1,6 @@
+// agora vamos criar o o new post... 
+
+// 1  - new post é a para colocarmos na home page do projeto... 
+
+// vamos fazer o css e html e js da pagina.. 
+
