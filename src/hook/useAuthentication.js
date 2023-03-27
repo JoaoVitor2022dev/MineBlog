@@ -66,7 +66,6 @@ export const useAuthentication = () => {
      });
 
      // por fim retorna o user criado com sucesso
- 
      setLoading(false); 
 
      return user;
@@ -107,6 +106,41 @@ export const useAuthentication = () => {
      signOut(auth);
          
     }; 
+
+    // login 
+
+    const login = async(data) => {
+        
+      checkIfIsCancelled(); 
+
+      setLoading(true); 
+      setError(false);
+
+      try {
+        
+       await signInWithEmailAndPassword(auth, data.email, data.password); 
+
+       setLoading(true); 
+
+      } catch (error) {
+         
+        let systemErrorMessage; 
+
+        if (error.message.includes("user-not-found")) {
+           systemErrorMessage = "Usuario nao encontrado."; 
+        } else if (error.message.includes("wrong-password")) {
+           systemErrorMessage = "Senha incorreta."
+        } else {
+           systemErrorMessage = "Ocorreu um erro, por favor tente mais tarde.";
+        }
+
+        setError(systemErrorMessage);
+        
+        setLoading(false);
+      }
+
+    };
+
     
    // uma funcitond e user effet so para repetir uma vez e cancelar as outras functions 
    useEffect(() => { 
@@ -122,6 +156,7 @@ export const useAuthentication = () => {
         error,
         loading,
         logout,
+        login
     }
 
 };

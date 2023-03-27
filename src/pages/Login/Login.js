@@ -12,7 +12,7 @@ const Login = () => {
   const [error, setError] = useState("");
 
  // dados do back and e da authentication 
-  const { createUser, error: AuthError, loading } = useAuthentication();
+  const { login , error: AuthError, loading } = useAuthentication();
   
 
   // function que esta respondavel por mandar dados para o back and por meio do hook useAuthentication.js 
@@ -27,7 +27,7 @@ const Login = () => {
     }
 
     //  vamos cria o res e mandar para o back and do firebase
-    const res = await createUser(user); 
+    const res = await login(user); 
 
     console.log(res);
 
