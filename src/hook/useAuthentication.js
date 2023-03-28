@@ -70,6 +70,7 @@ export const useAuthentication = () => {
 
      return user;
 
+
      } catch (error) {
         
       // so fazer o error e deicar ele mais legivel 
