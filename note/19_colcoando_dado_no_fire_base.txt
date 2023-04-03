@@ -1,0 +1,2 @@
+//  vamos agors usar o hook com os dados e colocar os dado do spost no fire base
+

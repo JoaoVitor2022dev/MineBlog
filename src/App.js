@@ -34,8 +34,6 @@ function App() {
   const [user, setUser] = useState(undefined);
   const { auth } = useAuthentication(); 
   
-  
-
   // if boleano para ve se o usuario é definido ou nao 
   const loadingUser = user === undefined;
 
