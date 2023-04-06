@@ -55,7 +55,7 @@ const CreatePost = () => {
       body,
       tagsArray,
       uid: user.uid,
-      createdBy: user.displayname,
+      createdBy: user.displayName,
     });
 
     // redirect 

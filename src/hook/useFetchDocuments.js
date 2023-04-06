@@ -14,8 +14,8 @@ export const useFetchDocuments = ( docCollection, search = null, uid = null ) =>
    function checkIfIsCancelled() {
     if (cancelled) {
         return;
+    } 
     }
-
 
     useEffect(() => {
  
@@ -26,18 +26,41 @@ export const useFetchDocuments = ( docCollection, search = null, uid = null ) =>
 
         const collectionRef = await collection(db, docCollection)
 
- 
         try {
-            
+             
+        let que; 
+
+        // busca 
+        // dashbord
+
+         que = await  query(collectionRef, orderBy("createdAt", "desc")); 
+
+        await onSnapshot(que, (querySnapshot) => {
+ 
+         setDocuments(
+            querySnapshot.docs.map((doc) => ( {
+                id: doc.id,
+                ...doc.data(),
+            }))
+         )    
+     }) 
+
+        setLoading(false);
+
         } catch (error) {
-            
+           console.log(error);
+           setError(error.message) 
         }
-
-
     }    
+ 
+    loadData();
 
     }, [docCollection, search, uid, cancelled])
-
-}
-
+ 
+    useEffect(() => {
+       return () => setCancelled(true);
+    },[])
+ 
+    return { documents, error , loading }
 };
+
