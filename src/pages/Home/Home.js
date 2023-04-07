@@ -15,9 +15,15 @@ const Home = () => {
  
  const { documents: posts , loading } = useFetchDocuments("posts")
 
+ const navigate = useNavigate()
 
  const handleSubmit = (event) => {
    event.preventDefault();
+
+   if (query) {
+      return navigate(`/search?q=${query}`);
+   }
+   
  };
 
 
