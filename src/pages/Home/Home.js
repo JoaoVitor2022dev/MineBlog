@@ -9,7 +9,6 @@ import { useFetchDocuments } from "../../hook/useFetchDocuments";
 // componentes
 import PostDetail from "../../components/PostDetail";
 
-
 const Home = () => {
  const [query, setQuery] = useState("");
  
