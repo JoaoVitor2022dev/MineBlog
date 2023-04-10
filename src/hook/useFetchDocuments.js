@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { db } from "../firebase/config";
 import { collection, query , orderBy, onSnapshot, where } from "firebase/firestore";
@@ -10,12 +11,7 @@ export const useFetchDocuments = ( docCollection, search = null, uid = null ) =>
 
    // memory leak
    const [cancelled, setCancelled] = useState(false);
- 
-   function checkIfIsCancelled() {
-    if (cancelled) {
-        return;
-    } 
-    }
+
 
     useEffect(() => {
  
@@ -30,14 +26,11 @@ export const useFetchDocuments = ( docCollection, search = null, uid = null ) =>
              
         let q; 
 
-        // busca 
-
         if(search) {
-            q = await query(collectionRef, where("tags", "array-contains", search), orderBy("createdAt", "desc"));
+            q = await query(collectionRef, where("tagsArray", "array-contains", search), orderBy("createdAt", "desc"));
         } else {
             q = await  query(collectionRef, orderBy("createdAt", "desc")); 
         }
-
 
         // dashbord
 
@@ -68,7 +61,8 @@ export const useFetchDocuments = ( docCollection, search = null, uid = null ) =>
     useEffect(() => {
        return () => setCancelled(true);
     },[])
- 
+   
+
     return { documents, error , loading }
 };
 
