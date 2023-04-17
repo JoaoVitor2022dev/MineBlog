@@ -13,7 +13,6 @@ const Dashboard = () => {
   const { documents: posts, loading } = useFetchDocuments("posts", null, uid);
 
   const deleteDocument = (id) => {
-
   }
   
   if (loading) {
@@ -36,7 +35,7 @@ const Dashboard = () => {
         </div>
       ) : (
         <>
-         <div>
+         <div className={styles.post_head}>
             <span>Titulos</span>
             <span>Acoes</span>
          </div>
